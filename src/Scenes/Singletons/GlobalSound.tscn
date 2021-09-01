@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Scripts/Singletons/GlobalSound.gd" type="Script" id=1]
+
+[node name="GlobalSound" type="Node"]
+script = ExtResource( 1 )
+bgm_db = -12
+sfx_db = -4
+attack_db = 4
+detect_db = -4
+walk_db = -12
+block_db = -12
+push_db = -8
+socket_db = -8
+navigation_db = -4
+warp_db = -8
+win_db = -12
+lose_db = -12
+
+[node name="BGMP" type="AudioStreamPlayer" parent="."]
+bus = "Music"

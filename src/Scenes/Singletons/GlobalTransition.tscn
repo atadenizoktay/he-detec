@@ -1,0 +1,176 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/m3x6.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/Scripts/Singletons/GlobalTransition.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Active"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 2.4 ),
+"transitions": PoolRealArray( 0.52, 0.38, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+extra_spacing_top = -3
+extra_spacing_bottom = -3
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("C/Up:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.52, 1 ),
+"update": 0,
+"values": [ Vector2( -32, -24 ), Vector2( -32, -66 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("C/Down:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.52, 1 ),
+"update": 0,
+"values": [ Vector2( -32, 24 ), Vector2( -32, 66 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("C/Up:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.52, 1 ),
+"update": 0,
+"values": [ Vector2( -32, -66 ), Vector2( -32, -24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("C/Down:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.52, 1 ),
+"update": 0,
+"values": [ Vector2( -32, 66 ), Vector2( -32, 24 ) ]
+}
+
+[node name="GlobalTransition" type="CanvasLayer"]
+layer = 100
+script = ExtResource( 3 )
+wave_amp = 30
+wave_freq = 2
+
+[node name="C" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="ColorRect" parent="C"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = 24.0
+margin_right = 32.0
+margin_bottom = 24.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="C/Down"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = 8.0
+margin_right = -36.0
+margin_bottom = -24.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="C/Down/M"]
+margin_right = 56.0
+margin_bottom = 32.0
+mouse_filter = 2
+size_flags_horizontal = 3
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="C/Down/M/Icon"]
+anims/Active = SubResource( 1 )
+
+[node name="Up" type="ColorRect" parent="C"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -24.0
+margin_right = 32.0
+margin_bottom = -24.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="C/Up"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = 24.0
+margin_right = -36.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notice" type="RichTextLabel" parent="C/Up/M"]
+margin_right = 56.0
+margin_bottom = 40.0
+mouse_filter = 2
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=30 freq=2][center]So you wanna detec..?[/center][/wave]"
+text = "So you wanna detec..?"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 3 )
+anims/FadeOut = SubResource( 4 )

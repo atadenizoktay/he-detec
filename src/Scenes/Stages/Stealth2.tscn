@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/Scenes/Entities/Skip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/art/environment/stealth_2.png" type="Texture" id=2]
+[ext_resource path="res://src/Scenes/Entities/Actor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Scenes/Entities/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Scenes/Environment/Floor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Scripts/Main/Level.gd" type="Script" id=6]
+[ext_resource path="res://src/Scenes/Stages/Sokoban2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Scenes/Misc/ClearTimer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Scenes/Misc/RestartTimer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/art/entities/character/enemy1.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/entities/character/enemy3.png" type="Texture" id=11]
+
+
+[node name="Stealth2" type="Node2D" groups=[
+"Level",
+]]
+script = ExtResource( 6 )
+level_type = 1
+level_name = "Stealth2"
+next_level = ExtResource( 7 )
+
+[node name="RestartTimer" parent="." instance=ExtResource( 9 )]
+
+[node name="ClearTimer" parent="." instance=ExtResource( 8 )]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+
+[node name="Skip" parent="." instance=ExtResource( 1 )]
+position = Vector2( 44, 4 )
+
+[node name="Floor" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 4, 0, 6, 1, 0, 7, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 4, 0, 65539, 4, 0, 65540, 1, 0, 65541, 4, 0, 65542, 4, 0, 65543, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 4, 0, 131075, 4, 0, 131076, 1, 0, 131079, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 4, 0, 196611, 4, 0, 196612, 1, 0, 196613, 4, 0, 196614, 4, 0, 196615, 1, 0, 262145, 4, 0, 262148, 1, 0, 262149, 4, 0, 262150, 4, 0, 262151, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 4, 0, 327683, 4, 0, 327684, 1, 0, 327685, 4, 0, 327686, 4, 0, 327687, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 4, 0, 393219, 4, 0, 393220, 4, 0, 393221, 4, 0, 393222, 4, 0, 393223, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 4, 0, 458755, 4, 0, 458756, 1, 0, 458757, 4, 0, 458758, 4, 0, 458759, 1, 0 )
+
+[node name="Actor" parent="Floor" instance=ExtResource( 3 )]
+position = Vector2( 4, 36 )
+
+[node name="Enemy1" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 20, 36 )
+enemy_attack_type = 1
+enemy_trigger_type = 1
+enemy_roam_type = 1
+enemy_roam_start_direction = 3
+enemy_cooldown_type = 1
+enemy_texture = ExtResource( 10 )
+
+[node name="Enemy2" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 28, 36 )
+enemy_attack_type = 1
+enemy_trigger_type = 1
+enemy_roam_type = 1
+enemy_roam_start_direction = 2
+enemy_cooldown_type = 1
+enemy_texture = ExtResource( 10 )
+
+[node name="Enemy3" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 44, 20 )
+enemy_trigger_type = 1
+enemy_attack_range = 10
+enemy_texture = ExtResource( 11 )
+
+[node name="Enemy4" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 52, 20 )
+enemy_trigger_type = 1
+enemy_attack_range = 10
+enemy_texture = ExtResource( 11 )

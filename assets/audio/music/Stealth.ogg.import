@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Stealth.ogg-a779573f668e96c42512ad6d25fa7c58.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Stealth.ogg"
+dest_files=[ "res://.import/Stealth.ogg-a779573f668e96c42512ad6d25fa7c58.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

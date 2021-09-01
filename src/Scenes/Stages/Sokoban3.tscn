@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/art/entities/interactable/magnifier.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/environment/sokoban_3.png" type="Texture" id=2]
+[ext_resource path="res://src/Scenes/Entities/Actor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Scenes/Entities/BasicBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Scenes/Environment/Floor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Scripts/Main/Level.gd" type="Script" id=6]
+[ext_resource path="res://src/Scenes/Entities/Slot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/art/entities/misc/slot_bookshelf.png" type="Texture" id=8]
+[ext_resource path="res://src/Scenes/Misc/ClearTimer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Scenes/Misc/RestartTimer.tscn" type="PackedScene" id=10]
+
+
+[node name="Sokoban3" type="Node2D" groups=[
+"Level",
+]]
+script = ExtResource( 6 )
+level_name = "Sokoban3"
+slot_count = 3
+
+[node name="RestartTimer" parent="." instance=ExtResource( 10 )]
+
+[node name="ClearTimer" parent="." instance=ExtResource( 9 )]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+
+[node name="Slots" type="Node2D" parent="."]
+
+[node name="Slot" parent="Slots" instance=ExtResource( 7 )]
+position = Vector2( 28, 36 )
+slot_texture = ExtResource( 8 )
+
+[node name="Slot2" parent="Slots" instance=ExtResource( 7 )]
+position = Vector2( 52, 36 )
+slot_texture = ExtResource( 8 )
+
+[node name="Slot3" parent="Slots" instance=ExtResource( 7 )]
+position = Vector2( 36, 52 )
+slot_texture = ExtResource( 8 )
+
+[node name="Floor" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 1, 0, 65541, 4, 0, 65542, 4, 0, 65543, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131079, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 1, 0, 196611, 1, 0, 196612, 4, 0, 196613, 4, 0, 196614, 1, 0, 196615, 1, 0, 262144, 4, 0, 262145, 4, 0, 262146, 1, 0, 262147, 4, 0, 262148, 4, 0, 262149, 4, 0, 262150, 4, 0, 262151, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 4, 0, 327684, 4, 0, 327685, 1, 0, 327686, 4, 0, 327687, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 4, 0, 393220, 4, 0, 393221, 4, 0, 393222, 4, 0, 393223, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0 )
+
+[node name="Actor" parent="Floor" instance=ExtResource( 3 )]
+position = Vector2( 4, 20 )
+
+[node name="BasicBox" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 12, 20 )
+box_texture = ExtResource( 1 )
+
+[node name="BasicBox2" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 20, 20 )
+box_texture = ExtResource( 1 )
+
+[node name="BasicBox3" parent="Floor" instance=ExtResource( 4 )]
+position = Vector2( 52, 20 )
+box_texture = ExtResource( 1 )

@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/art/ui/misc/bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/m3x6.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/Scripts/Main/Menu.gd" type="Script" id=5]
+
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_top = -3
+extra_spacing_bottom = -12
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+extra_spacing_top = -6
+extra_spacing_bottom = -4
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 2.4
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.2
+one_shot = true
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="V" type="VBoxContainer" parent="M"]
+margin_right = 56.0
+margin_bottom = 56.0
+mouse_filter = 2
+custom_constants/separation = 0
+
+[node name="H1" type="HBoxContainer" parent="M/V"]
+margin_right = 56.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 0, 12 )
+mouse_filter = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="M/V/H1"]
+margin_right = 56.0
+margin_bottom = 12.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=20 freq=2][center]He Detec![/center][/wave]"
+text = "He Detec!"
+scroll_active = false
+
+[node name="H2" type="HBoxContainer" parent="M/V"]
+margin_top = 12.0
+margin_right = 56.0
+margin_bottom = 32.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Start" type="Label" parent="M/V/H2"]
+self_modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+margin_left = 16.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 24, 10 )
+mouse_filter = 0
+custom_fonts/font = SubResource( 2 )
+text = "Start"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="H3" type="HBoxContainer" parent="M/V"]
+margin_top = 32.0
+margin_right = 56.0
+margin_bottom = 44.0
+mouse_filter = 2
+
+[node name="Music" type="Label" parent="M/V/H3"]
+self_modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+margin_right = 56.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 24, 12 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Music: M"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="H4" type="HBoxContainer" parent="M/V"]
+margin_top = 44.0
+margin_right = 56.0
+margin_bottom = 56.0
+mouse_filter = 2
+
+[node name="Sound" type="Label" parent="M/V/H4"]
+self_modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+margin_right = 56.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 24, 12 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Sound: v"
+valign = 1
+autowrap = true
+clip_text = true
+
+[connection signal="gui_input" from="M/V/H2/Start" to="." method="_on_Start_gui_input"]
+[connection signal="mouse_entered" from="M/V/H2/Start" to="." method="_on_Start_mouse_entered"]
+[connection signal="mouse_exited" from="M/V/H2/Start" to="." method="_on_Start_mouse_exited"]
