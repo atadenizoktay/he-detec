@@ -84,8 +84,12 @@ func request_move(pawn: Object, direction: Vector2) -> Vector2:
 			if pawn.cell_type == CELL_TYPES.ACTOR:
 				# Checks if the box is pushable, if so, pushes it.
 				var colliding_box: KinematicBody2D = pawn.Face.get_collider()
+				if not colliding_box:
+					# This prevents a bug that occurs when too many inputs are
+					# given successively.
+					return Vector2(0, 0)
+					
 				var can_push: bool = colliding_box.box_movement(direction)
-				
 				if can_push:
 					GlobalSound.play_sound("Push")
 					movement_status = "Pushing ..."
